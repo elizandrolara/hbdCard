@@ -26,9 +26,10 @@ class MainActivity : ComponentActivity() {
             HappyBirthdayTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
+                    val name:String= getString(R.string.place_name)
                     BirthdayGreetingWithImage(
-                        message = getString(R.string.happy_birthday_text),
-                        from = getString(R.string.signature_text)
+                        message = getString(R.string.happy_birthday_txt) +  " $name" + "!" ,
+                        from = getString(R.string.signature_text),
                     )
                 }
             }
@@ -46,7 +47,7 @@ fun BirthdayGreetingWithText(message: String, from : String){
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.CenterHorizontally)
-                .padding(start = 16.dp, top= 16.dp)
+                .padding(start = 16.dp, top = 16.dp)
 
         )
         Text(
@@ -79,9 +80,12 @@ fun BirthdayGreetingWithImage(message: String, from : String){
 @Preview(showBackground = false)
 @Composable
 fun BirthdayCardPreview() {
+    val name :String = "Meredit"
     HappyBirthdayTheme {
-        BirthdayGreetingWithImage(message = "Happy Birthday Dani!!",
-            from = "- from Elizandro" )
+        BirthdayGreetingWithImage(
+            message = "Happy Birthday $name !!",
+            from = "- from Elizandro",
+        )
 
     }
 }
